@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab id="TabOzgrid"
+           insertAfterMso="TabView"
+           label="Ozgrid">
+        <group id="forumTools"
+               label="Forum Tools" 
+               autoScale="true" 
+               screentip="Helpful tools for use with ozgrid.com/forum">
+            <button id="scrambleWorkbook"
+                    label="Scramble Copy"
+                    screentip="Create a copy of a workbook, removing identifiable data but preserving the layout required for help in the public forum."
+                    onAction="CreateUploadableWorkbook"/>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
+
