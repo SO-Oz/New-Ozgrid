@@ -160,6 +160,12 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="WorkbookList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkbookList.Designer.cs">
+      <DependentUpon>WorkbookList.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -169,6 +175,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="WorkbookList.resx">
+      <DependentUpon>WorkbookList.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Ozgrid_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -21,6 +21,7 @@ namespace Ozgrid
         public void CreateUploadableWorkbook(Office.IRibbonControl control)
         {
             System.Windows.Forms.MessageBox.Show("Button pressed");
+            WorkbookList wbForm = new WorkbookList();
         }
         #region IRibbonExtensibility Members
 
