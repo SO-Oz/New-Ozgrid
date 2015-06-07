@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using Office = Microsoft.Office.Core;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Ozgrid
 {
@@ -20,8 +21,24 @@ namespace Ozgrid
 
         public void CreateUploadableWorkbook(Office.IRibbonControl control)
         {
-            System.Windows.Forms.MessageBox.Show("Button pressed");
+            //System.Windows.Forms.MessageBox.Show("Button pressed");
+
+            if (Globals.ThisAddIn.Application.Workbooks.Count == 1)
+            {
+
+            }
             WorkbookList wbForm = new WorkbookList();
+            var workbookNames = new List<string> { };
+
+            foreach (Excel.Workbook wb in Globals.ThisAddIn.Application.Workbooks)
+            {
+                workbookNames.Add(wb.Name);
+            }
+
+            wbForm.lbWorkbooks.DataSource = workbookNames.ToArray();
+
+            wbForm.Show();
+          
         }
         #region IRibbonExtensibility Members
 

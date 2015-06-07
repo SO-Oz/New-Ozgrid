@@ -18,6 +18,8 @@ namespace Ozgrid
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
+            Excel.Workbook VBA_Workbook = Application.Workbooks.Add();
+            VBA_Workbook._
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
