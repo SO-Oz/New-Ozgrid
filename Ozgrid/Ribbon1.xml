@@ -14,6 +14,15 @@
                     screentip="Create a copy of a workbook, removing identifiable data but preserving the layout required for help in the public forum."
                     onAction="CreateUploadableWorkbook"/>
         </group>
+        <group id="UDFtools"
+               label="Settings"
+               autoScale="true"
+               screentip="Ozgrid Add-In Settings.">
+          <button id="initUDF"
+                  label="Initialize UDFs"
+                  screentip="Load the add-in that contains the advanced Ozgrid functions."
+                  onAction="InitializeUDFWorkbook"/>
+        </group>
       </tab>
     </tabs>
   </ribbon>

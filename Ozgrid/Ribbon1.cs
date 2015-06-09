@@ -40,6 +40,32 @@ namespace Ozgrid
             wbForm.Show();
           
         }
+
+        public void InitializeUDFWorkbook(Office.IRibbonControl control)
+        {
+            // XLA LOCATION:
+            string fileLoc = Environment.ExpandEnvironmentVariables("%APPDATA%") + "\\Microsoft\\AddIns\\UDF.xlam";
+
+            try
+            {
+                Globals.ThisAddIn.Application.ScreenUpdating = false;
+                Excel.Workbook UDFWorkbook = Globals.ThisAddIn.Application.Workbooks.Open(fileLoc);
+                //UDFWorkbook.Windows[1].Visible = false;
+                //UDFWorkbook.Saved = true;
+                System.Windows.Forms.MessageBox.Show("UDFs initialized successfully!","Ozgrid",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Information);
+
+            }
+            catch (Exception fail)
+            {
+                // Debug purposes, remove after testing:
+                    System.Windows.Forms.MessageBox.Show(fail.ToString());
+            }
+            finally
+            {
+                Globals.ThisAddIn.Application.ScreenUpdating = true;
+
+            }
+        }
         #region IRibbonExtensibility Members
 
         public string GetCustomUI(string ribbonID)
