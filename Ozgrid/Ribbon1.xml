@@ -5,6 +5,7 @@
       <tab id="TabOzgrid"
            insertAfterMso="TabView"
            label="Ozgrid">
+        
         <group id="forumTools"
                label="Forum Tools" 
                autoScale="true" 
@@ -14,13 +15,16 @@
                     screentip="Create a copy of a workbook, removing identifiable data but preserving the layout required for help in the public forum."
                     onAction="CreateUploadableWorkbook"/>
         </group>
+        
         <group id="UDFtools"
                label="Settings"
                autoScale="true"
                screentip="Ozgrid Add-In Settings.">
           <button id="initUDF"
+                  size="large"
                   label="Initialize UDFs"
                   screentip="Load the add-in that contains the advanced Ozgrid functions."
+                  imageMso="CreateReportFromWizard"
                   onAction="InitializeUDFWorkbook"/>
         </group>
       </tab>

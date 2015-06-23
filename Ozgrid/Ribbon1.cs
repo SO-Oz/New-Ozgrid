@@ -38,6 +38,7 @@ namespace Ozgrid
             wbForm.lbWorkbooks.DataSource = workbookNames.ToArray();
 
             wbForm.Show();
+
           
         }
 
@@ -58,7 +59,7 @@ namespace Ozgrid
             catch (Exception fail)
             {
                 // Debug purposes, remove after testing:
-                    System.Windows.Forms.MessageBox.Show(fail.ToString());
+                    System.Windows.Forms.MessageBox.Show(fail.Message);
             }
             finally
             {

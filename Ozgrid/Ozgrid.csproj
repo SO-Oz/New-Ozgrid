@@ -163,6 +163,13 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ufRangeToClipboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ufRangeToClipboard.Designer.cs">
+      <DependentUpon>ufRangeToClipboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VBAtoUDF.cs" />
     <Compile Include="WorkbookList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +185,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ufRangeToClipboard.resx">
+      <DependentUpon>ufRangeToClipboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WorkbookList.resx">
       <DependentUpon>WorkbookList.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,4 +245,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>echo %250 &gt;&gt; %25userprofile%25\desktop\ozgrid.log</PreBuildEvent>
+  </PropertyGroup>
 </Project>

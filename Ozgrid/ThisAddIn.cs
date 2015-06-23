@@ -5,19 +5,25 @@ using System.Text;
 using System.Xml.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
 using Office = Microsoft.Office.Core;
-//using Microsoft.Office.Tools.Excel;
 using Microsoft.Vbe.Interop;
 
 namespace Ozgrid
 {
+    public enum Ret { eVal, eA1, eR1 };
+
     public partial class ThisAddIn
     {
+        public Ret IIf(bool expression, Ret truePart, Ret falsePart)
+        { return expression ? truePart : falsePart; }
+
+        
         protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
         {
             return new OzgridRibbon();
         }
 
         public Excel.Workbook VBA_Workbook;
+
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
            
@@ -41,5 +47,10 @@ namespace Ozgrid
         }
         
         #endregion
+
+        internal Ret IIf(System.Windows.Forms.RadioButton optA1, Ret ret1, Ret ret2)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
