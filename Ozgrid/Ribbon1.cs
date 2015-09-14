@@ -5,8 +5,11 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 using Excel = Microsoft.Office.Interop.Excel;
+using VBA = Microsoft.VisualBasic;
+using Regex = System.Text.RegularExpressions.Regex;
 
 namespace Ozgrid
 {
@@ -19,13 +22,29 @@ namespace Ozgrid
         {
         }
 
+        public void ScrambleWorkbook(Office.IRibbonControl control)
+        {
+            // prompt usage explanation
+            string msg = "Would you like to exclude any ranges from this process?";
+            if (MessageBox.Show(msg, "Sanitize Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes)
+            {
+                
+            }
+        }
+
+        private void Scramble(Excel.Range cell)
+        {
+            string cellType;
+
+            cellType = VBA.Information.TypeName(cell.Value);
+            MessageBox.Show(cellType);
+        }
         public void CreateUploadableWorkbook(Office.IRibbonControl control)
         {
-            //System.Windows.Forms.MessageBox.Show("Button pressed");
-
+            
             if (Globals.ThisAddIn.Application.Workbooks.Count == 1)
             {
-
+                
             }
             WorkbookList wbForm = new WorkbookList();
             var workbookNames = new List<string> { };
@@ -37,36 +56,36 @@ namespace Ozgrid
 
             wbForm.lbWorkbooks.DataSource = workbookNames.ToArray();
 
-            wbForm.Show();
-
-          
+            wbForm.Show();        
         }
 
-        public void InitializeUDFWorkbook(Office.IRibbonControl control)
-        {
-            // XLA LOCATION:
-            string fileLoc = Environment.ExpandEnvironmentVariables("%APPDATA%") + "\\Microsoft\\AddIns\\UDF.xlam";
+        public void CheckWorkbookForUpload(Office.IRibbonControl control)
+        {   
+            // required variables
+            Excel.Workbook checkBook = Globals.ThisAddIn.Application.ActiveWorkbook;
+            FileInfo checkBookLen = new FileInfo(checkBook.FullName);
+            string output = "";
+            long maxFileSize = 100000;
+            long actualFileSize;
 
             try
             {
-                Globals.ThisAddIn.Application.ScreenUpdating = false;
-                Excel.Workbook UDFWorkbook = Globals.ThisAddIn.Application.Workbooks.Open(fileLoc);
-                //UDFWorkbook.Windows[1].Visible = false;
-                //UDFWorkbook.Saved = true;
-                System.Windows.Forms.MessageBox.Show("UDFs initialized successfully!","Ozgrid",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Information);
-
-            }
-            catch (Exception fail)
+                actualFileSize = checkBookLen.Length;
+            } 
+            catch(Exception e)
             {
-                // Debug purposes, remove after testing:
-                    System.Windows.Forms.MessageBox.Show(fail.Message);
+                Console.WriteLine("Exception Found:\n\t{0}", e.Message);
+                actualFileSize = 0;
             }
-            finally
-            {
-                Globals.ThisAddIn.Application.ScreenUpdating = true;
 
+            if (actualFileSize > 0 && actualFileSize <= maxFileSize)
+            {
+                output += "File Size:\tOK\r\n";
             }
+
+
         }
+
         #region IRibbonExtensibility Members
 
         public string GetCustomUI(string ribbonID)

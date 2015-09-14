@@ -10,22 +10,48 @@
                label="Forum Tools" 
                autoScale="true" 
                screentip="Helpful tools for use with ozgrid.com/forum">
-            <button id="scrambleWorkbook"
-                    label="Scramble Copy"
-                    screentip="Create a copy of a workbook, removing identifiable data but preserving the layout required for help in the public forum."
-                    onAction="CreateUploadableWorkbook"/>
+          
+            <button id="sanitiseData"
+                    size="large"
+                    label="Sanitise Data"
+                    screentip="Create a copy of a workbook, removing identifiable data but preserving the layout required for help in the forum."
+                    imageMso="DatabaseSetLogonSecurity"
+                    onAction="ScrambleWorkbook"/>
+
+            <button id="createSSTag"
+                    size="large"
+                    label="Create [SS] Tag"
+                    screentip="Create an [SS] tag of your data that can be posted directly onto the forum, this formats the data to look as it does in the spreadsheet."
+                    imageMso="ControlPaddingGallery"
+                    onAction="CreateSSTagFromRange"/>
+
+            <button id="checkUpload"
+                    size="large"
+                    label="Check Upload Compatibility"
+                    screentip="Check that this workbook is suitable for uploading as an example to the public forum."
+                    imageMso="UpgradeWorkbook"
+                    onAction="CheckWorkbookForUpload"/>
         </group>
         
-        <group id="UDFtools"
-               label="Settings"
+        <group id="generalTools"
+               label="General"
                autoScale="true"
-               screentip="Ozgrid Add-In Settings.">
-          <button id="initUDF"
-                  size="large"
-                  label="Initialize UDFs"
-                  screentip="Load the add-in that contains the advanced Ozgrid functions."
-                  imageMso="CreateReportFromWizard"
-                  onAction="InitializeUDFWorkbook"/>
+               screentip="Ozgrid Add-In Help.">
+
+            <button id="aboutThisAddIn"
+                    size="large"
+                    label="About Me"
+                    screentip="Information about this add-in."
+                    imageMso="Info"
+                    onAction="ShowAboutMeDialog"/>
+
+            <button id="helpThisAddIn"
+                    size="large"
+                    label="Help"
+                    screentip="Help with using this add-in and the features included"
+                    imageMso="Help"
+                    onAction="ShowHelpDialog"/>
+          
         </group>
       </tab>
     </tabs>
