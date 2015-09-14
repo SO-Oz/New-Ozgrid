@@ -23,13 +23,13 @@ namespace Ozgrid
         }
 
         public void ScrambleWorkbook(Office.IRibbonControl control)
-        {
-            
+        {          
             string msg = "Would you like to exclude any ranges from this process?";
-            if (MessageBox.Show(msg, "Sanitize Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes)
+            
+            if (MessageBox.Show(msg, "Sanitize Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 // Set initial range here.
-                if (MessageBox.Show("Add more cells?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes)
+                if (MessageBox.Show("Add more cells?", "Sanitize Data", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     // New range = Union(initRange, new Range)
                 }
